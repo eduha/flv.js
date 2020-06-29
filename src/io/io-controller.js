@@ -350,7 +350,7 @@ class IOController {
         emitter.emit("unloadStream", true);
     }
 
-    pauseStreem(){
+    pauseStream(){
         this.pause();
     }
 

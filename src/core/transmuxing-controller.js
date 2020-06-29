@@ -142,9 +142,14 @@ class TransmuxingController {
         ioctl.open(optionalFrom);
     }
 
-    pauseStreem(){
-        this._ioctl.pauseStreem()
-        this._loadSegment(0);
+    pauseStream(){
+        try {
+            this._ioctl.pauseStream()
+            this._loadSegment(0);
+            return true
+        }catch (e){
+            return false
+        }
     }
 
     stop() {
@@ -169,7 +174,6 @@ class TransmuxingController {
     resume() {
         if (this._ioctl && this._ioctl.isPaused()) {
             this._ioctl.resume();
-            console.log("this._ioctl.resume(); in transmuxer_controller")
             this._enableStatisticsReporter();
         }
     }

@@ -1,39 +1,16 @@
 {
-  "_args": [
-    [
-      "flv.js@1.5.0",
-      "/home/fivern/WebstormProjects/strazh-app"
-    ]
-  ],
-  "_from": "flv.js@1.5.0",
-  "_id": "flv.js@1.5.0",
-  "_inBundle": false,
-  "_integrity": "sha512-7tFwccqkFXpA7RIED0KvuNny2qVnpuGc5nTGsRpzrCT+qtwIaZyciK5UgyvgtlAMYaPFzYS0wdI92JiSBKOyXw==",
-  "_location": "/flv.js",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "flv.js@1.5.0",
-    "name": "flv.js",
-    "escapedName": "flv.js",
-    "rawSpec": "1.5.0",
-    "saveSpec": null,
-    "fetchSpec": "1.5.0"
+  "name": "flvjs-megacam",
+  "description": "",
+   "repository": {
+    "type": "git",
+    "url": "git://github.com/cenitelas/flv.js.git"
   },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/flv.js/-/flv.js-1.5.0.tgz",
-  "_spec": "1.5.0",
-  "_where": "/home/fivern/WebstormProjects/strazh-app",
-  "author": {
-    "name": "zheng qian",
-    "email": "xqq@xqq.im"
-  },
+  "author": "cenitelas",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Bilibili/flv.js/issues"
+    "url": "https://github.com/cenitelas/flv.js/issues"
   },
+  "homepage": "https://github.com/cenitelas/flv.js#readme",
   "dependencies": {
     "es6-promise": "^4.2.5",
     "webworkify": "^1.5.0"
@@ -59,7 +36,6 @@
     "vinyl-source-stream": "^1.1.2",
     "watchify": "^3.11.0"
   },
-  "homepage": "https://github.com/Bilibili/flv.js#readme",
   "jsnext:main": "./src/flv.js",
   "keywords": [
     "html5",
@@ -67,19 +43,13 @@
     "mse",
     "javascript"
   ],
-  "license": "Apache-2.0",
   "main": "./dist/flv.js",
   "module": "./src/flv.js",
-  "name": "flv.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bilibili/flv.js.git"
-  },
   "scripts": {
     "build": "gulp release",
     "dev": "gulp watch",
     "dtslint": "dtslint types"
   },
   "types": "./d.ts/flv.d.ts",
-  "version": "1.5.0"
+  "version": "1.0.2"
 }

@@ -272,7 +272,7 @@ class FlvPlayer {
         this._mediaElement.removeEventListener('stalled', this.e.onvStalled);
         this._mediaElement.removeEventListener('progress', this.e.onvProgress);
         this._msectl.seek(0);
-        this._transmuxer.pauseStreem()
+        this._transmuxer.pauseStream()
         this._mediaElement.addEventListener('loadedmetadata', this.e.onvLoadedMetadata);
         this._mediaElement.addEventListener('seeking', this.e.onvSeeking);
         this._mediaElement.addEventListener('canplay', this.e.onvCanPlay);

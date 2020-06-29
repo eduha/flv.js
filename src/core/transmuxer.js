@@ -104,8 +104,8 @@ class Transmuxer {
         }
     }
 
-    pauseStreem(){
-        this._controller.pauseStreem()
+    pauseStream(){
+        this._controller.pauseStream()
     }
 
     close() {
