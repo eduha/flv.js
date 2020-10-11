@@ -19,6 +19,7 @@
 import Log from '../utils/logger.js';
 import {BaseLoader, LoaderStatus, LoaderErrors} from './loader.js';
 import {RuntimeException} from '../utils/exception.js';
+import {emitter} from "../../../../src/Utils/globalEmitter";
 
 // For FLV over WebSocket live stream
 class WebSocketLoader extends BaseLoader {
@@ -36,7 +37,7 @@ class WebSocketLoader extends BaseLoader {
         this.TAG = 'WebSocketLoader';
 
         this._needStash = true;
-
+        this._dataSource = "";
         this._ws = null;
         this._requestAbort = false;
         this._receivedLength = 0;
@@ -51,6 +52,7 @@ class WebSocketLoader extends BaseLoader {
 
     open(dataSource) {
         try {
+            this._dataSource = dataSource;
             let ws = this._ws = new self.WebSocket(dataSource.url);
             ws.binaryType = 'arraybuffer';
             ws.onopen = this._onWebSocketOpen.bind(this);
@@ -73,6 +75,7 @@ class WebSocketLoader extends BaseLoader {
     }
 
     abort() {
+        emitter.emit('player_socket_abort',this._dataSource);
         let ws = this._ws;
         if (ws && (ws.readyState === 0 || ws.readyState === 1)) {  // CONNECTING || OPEN
             this._requestAbort = true;
@@ -88,6 +91,10 @@ class WebSocketLoader extends BaseLoader {
     }
 
     _onWebSocketClose(e) {
+        emitter.emit('player_socket_close',true);
+        if (this._ws) {
+            this.abort();
+        }
         if (this._requestAbort === true) {
             this._requestAbort = false;
             return;
@@ -132,6 +139,8 @@ class WebSocketLoader extends BaseLoader {
     }
 
     _onWebSocketError(e) {
+        emitter.emit('player_socket_error',true);
+
         this._status = LoaderStatus.kError;
 
         let info = {
