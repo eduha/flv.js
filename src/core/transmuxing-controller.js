@@ -26,6 +26,7 @@ import DemuxErrors from '../demux/demux-errors.js';
 import IOController from '../io/io-controller.js';
 import TransmuxingEvents from './transmuxing-events.js';
 import {LoaderStatus, LoaderErrors} from '../io/loader.js';
+import {emitter} from "../../../../src/Utils/globalEmitter";
 
 // Transmuxing (IO, Demuxing, Remuxing) controller, with multipart support
 class TransmuxingController {
@@ -342,14 +343,19 @@ class TransmuxingController {
     _onIOComplete(extraData) {
         let segmentIndex = extraData;
         let nextSegmentIndex = segmentIndex + 1;
-        if (nextSegmentIndex < this._mediaDataSource.segments.length) {
-            this._internalAbort();
-            this._remuxer.flushStashedSamples();
-            this._loadSegment(nextSegmentIndex);
-        } else {
-            this._remuxer.flushStashedSamples();
-            this._emitter.emit(TransmuxingEvents.LOADING_COMPLETE);
-            this._disableStatisticsReporter();
+        try {
+            if (nextSegmentIndex < this._mediaDataSource.segments.length) {
+                this._internalAbort();
+                this._remuxer.flushStashedSamples();
+                this._loadSegment(nextSegmentIndex);
+            } else {
+                this._remuxer.flushStashedSamples();
+                this._emitter.emit(TransmuxingEvents.LOADING_COMPLETE);
+                this._disableStatisticsReporter();
+            }
+        }catch (e){
+            console.error("Transmuxer error flush stashed samples")
+            emitter.emit('flushStashedSamples',this._mediaDataSource);
         }
     }
 
