@@ -262,9 +262,9 @@ class FlvPlayer {
         this._transmuxer.open();
     }
 
-    reload() {
+    async reload() {
         this._hasPendingLoad = true;
-        this._mediaElement.pause()
+        await this._mediaElement.pause()
         this._mediaElement.currentTime = 0;
         this._mediaElement.removeEventListener('loadedmetadata', this.e.onvLoadedMetadata);
         this._mediaElement.removeEventListener('seeking', this.e.onvSeeking);
@@ -272,18 +272,18 @@ class FlvPlayer {
         this._mediaElement.removeEventListener('stalled', this.e.onvStalled);
         this._mediaElement.removeEventListener('progress', this.e.onvProgress);
         this._msectl.seek(0);
-        this._transmuxer.pauseStream()
+        await this._transmuxer.pauseStream()
         this._mediaElement.addEventListener('loadedmetadata', this.e.onvLoadedMetadata);
         this._mediaElement.addEventListener('seeking', this.e.onvSeeking);
         this._mediaElement.addEventListener('canplay', this.e.onvCanPlay);
         this._mediaElement.addEventListener('stalled', this.e.onvStalled);
         this._mediaElement.addEventListener('progress', this.e.onvProgress);
-        this._mediaElement.play();
+        await this._mediaElement.play();
     }
 
-    unload() {
+    async unload() {
         if (this._mediaElement) {
-            this._mediaElement.pause();
+            await this._mediaElement.pause();
         }
 
         if (this._msectl) {
@@ -310,12 +310,12 @@ class FlvPlayer {
         this._mediaElement.play();
     }
 
-    play() {
-        return this._mediaElement.play();
+    async play() {
+        await this._mediaElement.play();
     }
 
-    pause() {
-        this._mediaElement.pause();
+    async pause() {
+        await this._mediaElement.pause();
     }
 
     get type() {
@@ -435,9 +435,9 @@ class FlvPlayer {
         }
     }
 
-    _suspendTransmuxer() {
+    async _suspendTransmuxer() {
         if (this._transmuxer) {
-            this._transmuxer.pause();
+            await this._transmuxer.pause();
 
             if (this._progressChecker == null) {
                 this._progressChecker = window.setInterval(this._checkProgressAndResume.bind(this), 1000);

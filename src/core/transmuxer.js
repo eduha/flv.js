@@ -23,6 +23,7 @@ import TransmuxingController from './transmuxing-controller.js';
 import TransmuxingEvents from './transmuxing-events.js';
 import TransmuxingWorker from './transmuxing-worker.js';
 import MediaInfo from './media-info.js';
+import work from 'webworkify-webpack'
 
 class Transmuxer {
 
@@ -32,7 +33,6 @@ class Transmuxer {
 
         if (config.enableWorker && typeof (Worker) !== 'undefined') {
             try {
-                let work = require('webworkify');
                 this._worker = work(TransmuxingWorker);
                 this._workerDestroying = false;
                 this._worker.addEventListener('message', this._onWorkerMessage.bind(this));

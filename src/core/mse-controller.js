@@ -324,25 +324,29 @@ class MSEController {
     }
 
     _needCleanupSourceBuffer() {
-        if (!this._config.autoCleanupSourceBuffer) {
-            return false;
-        }
+        try {
+            if (!this._config.autoCleanupSourceBuffer) {
+                return false;
+            }
 
-        let currentTime = this._mediaElement.currentTime;
+            let currentTime = this._mediaElement.currentTime;
 
-        for (let type in this._sourceBuffers) {
-            let sb = this._sourceBuffers[type];
-            if (sb) {
-                let buffered = sb.buffered;
-                if (buffered.length >= 1) {
-                    if (currentTime - buffered.start(0) >= this._config.autoCleanupMaxBackwardDuration) {
-                        return true;
+            for (let type in this._sourceBuffers) {
+                let sb = this._sourceBuffers[type];
+                if (sb) {
+                    let buffered = sb.buffered || [];
+                    if (buffered.length >= 1) {
+                        if (currentTime - buffered.start(0) >= this._config.autoCleanupMaxBackwardDuration) {
+                            return true;
+                        }
                     }
                 }
             }
-        }
 
-        return false;
+            return false;
+        }catch (e){
+            return false
+        }
     }
 
     _doCleanupSourceBuffer() {

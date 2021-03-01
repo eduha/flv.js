@@ -1,7 +1,7 @@
 {
   "name": "flvjs-megacam",
-  "description": "",
-   "repository": {
+  "description": "HTML5 FLV Player",
+  "repository": {
     "type": "git",
     "url": "git://github.com/cenitelas/flv.js.git"
   },
@@ -13,9 +13,9 @@
   "homepage": "https://github.com/cenitelas/flv.js#readme",
   "dependencies": {
     "es6-promise": "^4.2.5",
-    "webworkify": "^1.5.0"
+    "webworkify": "^1.5.0",
+    "webworkify-webpack": "^2.1.5"
   },
-  "description": "HTML5 FLV Player",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.0",
     "babelify": "^7.3.0",
@@ -51,5 +51,5 @@
     "dtslint": "dtslint types"
   },
   "types": "./d.ts/flv.d.ts",
-  "version": "1.0.4"
+  "version": "1.0.8"
 }
