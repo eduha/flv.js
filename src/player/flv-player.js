@@ -435,9 +435,9 @@ class FlvPlayer {
         }
     }
 
-    async _suspendTransmuxer() {
+    _suspendTransmuxer() {
         if (this._transmuxer) {
-            await this._transmuxer.pause();
+            this._transmuxer.pause();
 
             if (this._progressChecker == null) {
                 this._progressChecker = window.setInterval(this._checkProgressAndResume.bind(this), 1000);
