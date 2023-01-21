@@ -1,5 +1,5 @@
 {
-  "name": "flvjs-megacam",
+  "name": "@eduha/flv.js",
   "description": "HTML5 FLV Player",
   "repository": {
     "type": "git",
