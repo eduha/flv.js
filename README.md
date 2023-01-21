@@ -26,7 +26,7 @@ flvjs-megacam is written in [ECMAScript 6][], transpiled into ECMAScript 5 by [B
 
 ## Installation
 ```bash
-npm install --save flvjs-megacam
+npm install --save @eduha/flv.js
 ```
 
 ## Build
