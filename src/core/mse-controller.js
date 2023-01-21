@@ -22,7 +22,7 @@ import Browser from '../utils/browser.js';
 import MSEEvents from './mse-events.js';
 import {SampleInfo, IDRSampleList} from './media-segment-info.js';
 import {IllegalStateException} from '../utils/exception.js';
-import {emitter} from "../../../../src/Utils/globalEmitter";
+import {emitter} from "../globalEmitter";
 
 // Media Source Extensions controller
 class MSEController {
