@@ -19,7 +19,7 @@
 import Log from '../utils/logger.js';
 import {BaseLoader, LoaderStatus, LoaderErrors} from './loader.js';
 import {RuntimeException} from '../utils/exception.js';
-import {emitter} from "../../../../src/Utils/globalEmitter";
+import {emitter} from "../globalEmitter";
 
 // For FLV over WebSocket live stream
 class WebSocketLoader extends BaseLoader {
