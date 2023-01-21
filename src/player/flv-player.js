@@ -27,7 +27,7 @@ import MSEEvents from '../core/mse-events.js';
 import {ErrorTypes, ErrorDetails} from './player-errors.js';
 import {createDefaultConfig} from '../config.js';
 import {InvalidArgumentException, IllegalStateException} from '../utils/exception.js';
-import {emitter} from "../../../../src/Utils/globalEmitter";
+import {emitter} from "../globalEmitter";
 
 class FlvPlayer {
 
