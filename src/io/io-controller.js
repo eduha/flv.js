@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {emitter} from "../../../../src/Utils/globalEmitter";
+import {emitter} from "../globalEmitter";
 import Log from '../utils/logger.js';
 import SpeedSampler from './speed-sampler.js';
 import {LoaderStatus, LoaderErrors} from './loader.js';
